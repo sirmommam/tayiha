@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Mitr:wght@500;600;700&family=Sarabun:wght@400;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1c1410;
+  --color-cream: #fff4e6;
+  --color-muted: #d7c3ae;
+  --color-mango: #ffb703;
+  --color-chili: #e85d04;
+  --color-leaf: #2f9e6b;
+  --color-paper: #fff1d6;
+  --font-display: "Mitr", "Sarabun", ui-sans-serif, sans-serif;
+  --font-sans: "Sarabun", ui-sans-serif, sans-serif;
+  --radius-ticket: 1.25rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    background:
+      radial-gradient(900px 420px at 50% -12%, color-mix(in srgb, var(--color-mango) 22%, transparent), transparent 62%),
+      var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake-x {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-7px);
+  }
+  50% {
+    transform: translateX(7px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+}
+
+@keyframes timer-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pop {
+  animation: pop-in 220ms ease-out;
+}
+
+.animate-shake {
+  animation: shake-x 320ms ease-in-out;
+}
+
+.animate-float {
+  animation: float-up 800ms ease-out forwards;
+}
+
+.animate-timer {
+  animation: timer-pulse 700ms ease-in-out infinite;
+}
+
+.app-shell {
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop,
+  .animate-shake,
+  .animate-float,
+  .animate-timer {
+    animation: none;
+  }
+}
